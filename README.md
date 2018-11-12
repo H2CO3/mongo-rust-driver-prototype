@@ -1,4 +1,6 @@
-[![Travis](https://travis-ci.org/mongodb-labs/mongo-rust-driver-prototype.svg)](https://travis-ci.org/mongodb-labs/mongo-rust-driver-prototype) [![Crates.io](https://img.shields.io/crates/v/mongodb.svg)](https://crates.io/crates/mongodb) [![docs.rs](https://docs.rs/mongodb/badge.svg)](https://docs.rs/mongodb) [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
+[![Crates.io](https://img.shields.io/crates/v/mongodb-h2co3.svg)](https://crates.io/crates/mongodb-h2co3)
+[![docs.rs](https://docs.rs/mongodb-h2co3/badge.svg)](https://docs.rs/mongodb-h2co3)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 
 MongoDB Rust Driver Prototype
 =============================
@@ -7,14 +9,14 @@ This branch contains active development on a new driver written for Rust 1.x and
 
 The API and implementation are currently subject to change at any time. You should not use this driver in production as it is still under development and is in no way supported by MongoDB Inc. We absolutely encourage you to experiment with it and provide us feedback on the API, design, and implementation. Bug reports and suggestions for improvements are welcomed, as are pull requests.
 
-**Note**: This driver currently only supports MongoDB 3.0.x and 3.2.x. This driver is **not** expected to work with MongoDB 2.6 or any earlier versions. Do not use this driver if you need support for other versions of MongoDB.
+**Note**: This driver currently only supports MongoDB 3.0.x to 3.6.x. This driver is **not** expected to work with MongoDB 2.6 or any earlier versions. Do not use this driver if you need support for other versions of MongoDB.
 
 Installation
 ------------
 
 #### Dependencies
 
--	[Rust 1.7+ with Cargo](http://rust-lang.org)
+-	[Rust 1.30+ with Cargo](http://rust-lang.org)
 
 #### Importing
 
@@ -22,8 +24,8 @@ The driver is available on crates.io. To use the MongoDB driver in your code, ad
 
 ```toml
 [dependencies]
-bson = "0.12.2"
-mongodb = "0.3.10"
+bson = "0.13.0"
+mongodb_h2co3 = "0.3.11"
 ```
 
 Alternately, you can use the MongoDB driver with SSL support. To do this, you must have OpenSSL installed on your system. Then, enable the `ssl` feature for MongoDB in your Cargo.toml:
@@ -31,7 +33,7 @@ Alternately, you can use the MongoDB driver with SSL support. To do this, you mu
 ```toml
 [dependencies]
 # ...
-mongodb = { version = "0.3.10", features = ["ssl"] }
+mongodb-h2co3 = { version = "0.3.11", features = ["ssl"] }
 ```
 
 Then, import the bson and driver libraries within your code.
@@ -39,7 +41,7 @@ Then, import the bson and driver libraries within your code.
 ```rust
 #[macro_use(bson, doc)]
 extern crate bson;
-extern crate mongodb;
+extern crate mongodb_h2co3;
 ```
 
 Examples
@@ -49,8 +51,8 @@ Here's a basic example of driver usage:
 
 ```rust
 use bson::Bson;
-use mongodb::{Client, ThreadedClient};
-use mongodb::db::ThreadedDatabase;
+use mongodb_h2co3::{Client, ThreadedClient};
+use mongodb_h2co3::db::ThreadedDatabase;
 
 fn main() {
     let client = Client::connect("localhost", 27017)
@@ -89,8 +91,8 @@ To connect with SSL, use either `ClientOptions::with_ssl` or `ClientOptions::wit
 
 ```rust
 use bson::Bson;
-use mongodb::{Client, ClientOptions, ThreadedClient};
-use mongodb::db::ThreadedDatabase;
+use mongodb_h2co3::{Client, ClientOptions, ThreadedClient};
+use mongodb_h2co3::db::ThreadedDatabase;
 
 fn main() {
     // Path to file containing trusted server certificates.

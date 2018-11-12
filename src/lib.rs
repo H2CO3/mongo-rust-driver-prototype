@@ -123,7 +123,7 @@
     wrong_pub_self_convention,
 ))]
 
-#[doc(html_root_url = "https://docs.rs/mongodb")]
+#[doc(html_root_url = "https://docs.rs/mongodb-h2co3")]
 #[macro_use]
 extern crate bitflags;
 #[macro_use(bson, doc)]
